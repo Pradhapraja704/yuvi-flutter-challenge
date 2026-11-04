@@ -34,15 +34,15 @@ class _NewHabitContentState extends State<NewHabitContent> {
     minute: 0,
   );
 
-  final List<IconData> habitIcons = [
-    Icons.water_drop,
-    Icons.fitness_center,
-    Icons.menu_book,
-    Icons.directions_run,
-    Icons.self_improvement,
-    Icons.restaurant,
-    Icons.bedtime,
-    Icons.code,
+  final List<HabitIconData> habitIcons = [
+    HabitIconData('🧘', 'Yoga'),
+    HabitIconData('🎵', 'Singing'),
+    HabitIconData('📚', 'Reading'),
+    HabitIconData('🏃', 'Running'),
+    HabitIconData('💤', 'Sleeping'),
+    HabitIconData('🎨', 'Drawing'),
+    HabitIconData('🚴', 'Cycling'),
+    HabitIconData('⊞', 'All In'),
   ];
 
   @override
@@ -89,7 +89,7 @@ class _NewHabitContentState extends State<NewHabitContent> {
     );
 
     debugPrint('Habit Name: $habitName');
-    debugPrint('Selected Icon: $selectedIconIndex');
+    debugPrint('Selected Icon: ${habitIcons[selectedIconIndex].name}');
     debugPrint('Frequency: $selectedFrequency');
     debugPrint('Reminder Time: $formattedTime');
 
@@ -149,18 +149,50 @@ class HabitHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-          onPressed: () => Navigator.maybePop(context),
-          icon: const Icon(Icons.arrow_back),
-          color: const Color(0xFF333333),
+        Container(
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () => Navigator.maybePop(context),
+            icon: const Icon(
+              Icons.chevron_left,
+              size: 24,
+              color: Color(0xFF333333),
+            ),
+          ),
         ),
-        const SizedBox(width: 8),
-        const Text(
-          'Create New Habit',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFB7573A),
+        const Expanded(
+          child: Center(
+            child: Text(
+              'New Habit',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF222222),
+              ),
+            ),
+          ),
+        ),
+        Container(
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {},
+            icon: const Icon(
+              Icons.more_vert,
+              size: 22,
+              color: Color(0xFF333333),
+            ),
           ),
         ),
       ],
@@ -192,18 +224,32 @@ class HabitNameSection extends StatelessWidget {
         const SizedBox(height: 12),
         TextField(
           controller: controller,
-          decoration: const InputDecoration(
-            hintText: 'e.g. Drink 2L water',
+          style: const TextStyle(
+            fontSize: 13,
+            color: Color(0xFF333333),
+          ),
+          decoration: InputDecoration(
+            hintText: 'e.g. Morning Meditation',
+            hintStyle: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFF888888),
+            ),
             filled: true,
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 18,
+            fillColor: const Color(0xFFEAEAEA),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 18,
+              vertical: 13,
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12),
-              ),
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide.none,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none,
             ),
           ),
@@ -213,8 +259,15 @@ class HabitNameSection extends StatelessWidget {
   }
 }
 
+class HabitIconData {
+  final String emoji;
+  final String name;
+
+  const HabitIconData(this.emoji, this.name);
+}
+
 class HabitIconSelector extends StatelessWidget {
-  final List<IconData> icons;
+  final List<HabitIconData> icons;
   final int selectedIndex;
   final ValueChanged<int> onSelected;
 
@@ -231,7 +284,7 @@ class HabitIconSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Choose an Icon',
+          'Choose Icon',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -250,7 +303,7 @@ class HabitIconSelector extends StatelessWidget {
 }
 
 class HabitIconGrid extends StatelessWidget {
-  final List<IconData> icons;
+  final List<HabitIconData> icons;
   final int selectedIndex;
   final ValueChanged<int> onSelected;
 
@@ -263,29 +316,41 @@ class HabitIconGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 12,
-      runSpacing: 12,
-      children: List.generate(
-        icons.length,
-        (index) => HabitIconItem(
-          icon: icons[index],
-          isSelected: selectedIndex == index,
-          onTap: () => onSelected(index),
-        ),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const spacing = 6.0;
+        final itemWidth =
+            (constraints.maxWidth - spacing * 3) / 4;
+
+        return Wrap(
+          spacing: spacing,
+          runSpacing: 6,
+          children: List.generate(
+            icons.length,
+            (index) => SizedBox(
+              width: itemWidth,
+              height: 69,
+              child: HabitIconItem(
+                data: icons[index],
+                isSelected: selectedIndex == index,
+                onTap: () => onSelected(index),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
 
 class HabitIconItem extends StatelessWidget {
-  final IconData icon;
+  final HabitIconData data;
   final bool isSelected;
   final VoidCallback onTap;
 
   const HabitIconItem({
     super.key,
-    required this.icon,
+    required this.data,
     required this.isSelected,
     required this.onTap,
   });
@@ -296,8 +361,6 @@ class HabitIconItem extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(14),
       child: Container(
-        width: 58,
-        height: 58,
         decoration: BoxDecoration(
           color: isSelected
               ? const Color(0xFFFFE5DC)
@@ -305,15 +368,28 @@ class HabitIconItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected
-                ? const Color(0xFFB7573A)
+                ? const Color(0xFFFF947B)
                 : Colors.transparent,
-            width: 1.5,
+            width: 1,
           ),
         ),
-        child: Icon(
-          icon,
-          size: 25,
-          color: const Color(0xFFB7573A),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              data.emoji,
+              style: const TextStyle(fontSize: 25),
+            ),
+            const SizedBox(height: 3),
+            Text(
+              data.name,
+              maxLines: 1,
+              style: const TextStyle(
+                fontSize: 10,
+                color: Color(0xFF222222),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -343,7 +419,7 @@ class HabitFrequencySelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'How often?',
+          'Choose Icon',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -375,16 +451,28 @@ class HabitFrequencyOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 10,
-      runSpacing: 10,
-      children: frequencies.map((frequency) {
-        return HabitFrequencyItem(
-          title: frequency,
-          isSelected: selectedFrequency == frequency,
-          onTap: () => onSelected(frequency),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const spacing = 8.0;
+        final itemWidth =
+            (constraints.maxWidth - spacing) / 2;
+
+        return Wrap(
+          spacing: spacing,
+          runSpacing: 8,
+          children: frequencies.map((frequency) {
+            return SizedBox(
+              width: itemWidth,
+              height: 40,
+              child: HabitFrequencyItem(
+                title: frequency,
+                isSelected: selectedFrequency == frequency,
+                onTap: () => onSelected(frequency),
+              ),
+            );
+          }).toList(),
         );
-      }).toList(),
+      },
     );
   }
 }
@@ -405,29 +493,30 @@ class HabitFrequencyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(30),
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 14,
-        ),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected
-              ? const Color(0xFFFFE5DC)
-              : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected
-                ? const Color(0xFFB7573A)
-                : Colors.transparent,
-          ),
+          gradient: isSelected
+              ? const LinearGradient(
+                  colors: [
+                    Color(0xFFFF9B79),
+                    Color(0xFFFF6F70),
+                  ],
+                )
+              : null,
+          color: isSelected ? null : Colors.white,
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: const Color(0xFFB7573A),
+            fontSize: 12,
+            color: isSelected
+                ? const Color(0xFF222222)
+                : const Color(0xFF777777),
             fontWeight: isSelected
-                ? FontWeight.bold
+                ? FontWeight.w500
                 : FontWeight.normal,
           ),
         ),
