@@ -30,9 +30,10 @@ Set up the Flutter development environment and initialize a Flutter Web applicat
 | Browser         | Google Chrome      |
 | Version Control | Git & GitHub       |
 
+
 ## Project Structure
 
-
+```text
 day0/
 ├── lib/
 │   └── main.dart
