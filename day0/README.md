@@ -44,6 +44,7 @@ day0/
 ├── pubspec.yaml
 ├── pubspec.lock
 └── analysis_options.yaml
+```
 
 ## Getting Started
 
