@@ -72,7 +72,7 @@ No issues found!
 
 ## Application Screenshot
 
-
+The application screenshot is available in `screenshot.png`.
 
 ## Development Status
 
