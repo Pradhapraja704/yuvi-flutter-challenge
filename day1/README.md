@@ -55,7 +55,8 @@ flutter analyze
 
 ## Screenshot
 
-The application screenshot is available in `screenshot.png`.
+The application screenshot is available in `screenshot1.png`.
+The application screenshot is available in `screenshot2.png`.
 
 ## Learning Outcomes
 
