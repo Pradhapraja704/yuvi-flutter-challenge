@@ -6,36 +6,136 @@ class NewHabitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8F6F4),
+    return const Scaffold(
+      backgroundColor: Color(0xFFF8F6F4),
       body: SafeArea(
-        child: const NewHabitContent(),
+        child: NewHabitContent(),
       ),
     );
   }
 }
 
-class NewHabitContent extends StatelessWidget {
+class NewHabitContent extends StatefulWidget {
   const NewHabitContent({super.key});
 
   @override
+  State<NewHabitContent> createState() => _NewHabitContentState();
+}
+
+class _NewHabitContentState extends State<NewHabitContent> {
+  final TextEditingController habitNameController =
+      TextEditingController();
+
+  int selectedIconIndex = 0;
+  String selectedFrequency = 'Daily';
+
+  TimeOfDay selectedTime = const TimeOfDay(
+    hour: 8,
+    minute: 0,
+  );
+
+  final List<IconData> habitIcons = [
+    Icons.water_drop,
+    Icons.fitness_center,
+    Icons.menu_book,
+    Icons.directions_run,
+    Icons.self_improvement,
+    Icons.restaurant,
+    Icons.bedtime,
+    Icons.code,
+  ];
+
+  @override
+  void dispose() {
+    habitNameController.dispose();
+    super.dispose();
+  }
+
+  Future<void> selectReminderTime() async {
+    final TimeOfDay? pickedTime = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+    );
+
+    if (pickedTime != null) {
+      setState(() {
+        selectedTime = pickedTime;
+      });
+    }
+  }
+
+  void createHabit() {
+    final habitName = habitNameController.text.trim();
+
+    if (habitName.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a habit name.'),
+        ),
+      );
+      return;
+    }
+
+    final formattedTime =
+        MaterialLocalizations.of(context)
+            .formatTimeOfDay(selectedTime);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '$habitName habit created successfully!',
+        ),
+      ),
+    );
+
+    debugPrint('Habit Name: $habitName');
+    debugPrint('Selected Icon: $selectedIconIndex');
+    debugPrint('Frequency: $selectedFrequency');
+    debugPrint('Reminder Time: $formattedTime');
+
+    habitNameController.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      padding: EdgeInsets.all(20),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HabitHeader(),
-          SizedBox(height: 32),
-          HabitNameSection(),
-          SizedBox(height: 28),
-          HabitIconSelector(),
-          SizedBox(height: 28),
-          HabitFrequencySelector(),
-          SizedBox(height: 28),
-          ReminderTimeSection(),
-          SizedBox(height: 32),
-          CreateHabitButton(),
+          const HabitHeader(),
+          const SizedBox(height: 32),
+          HabitNameSection(
+            controller: habitNameController,
+          ),
+          const SizedBox(height: 28),
+          HabitIconSelector(
+            icons: habitIcons,
+            selectedIndex: selectedIconIndex,
+            onSelected: (index) {
+              setState(() {
+                selectedIconIndex = index;
+              });
+            },
+          ),
+          const SizedBox(height: 28),
+          HabitFrequencySelector(
+            selectedFrequency: selectedFrequency,
+            onSelected: (frequency) {
+              setState(() {
+                selectedFrequency = frequency;
+              });
+            },
+          ),
+          const SizedBox(height: 28),
+          ReminderTimeSection(
+            selectedTime: selectedTime,
+            onTap: selectReminderTime,
+          ),
+          const SizedBox(height: 32),
+          CreateHabitButton(
+            onPressed: createHabit,
+          ),
         ],
       ),
     );
@@ -69,14 +169,19 @@ class HabitHeader extends StatelessWidget {
 }
 
 class HabitNameSection extends StatelessWidget {
-  const HabitNameSection({super.key});
+  final TextEditingController controller;
+
+  const HabitNameSection({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Habit Name',
           style: TextStyle(
             fontSize: 16,
@@ -84,9 +189,10 @@ class HabitNameSection extends StatelessWidget {
             color: Color(0xFF333333),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         TextField(
-          decoration: InputDecoration(
+          controller: controller,
+          decoration: const InputDecoration(
             hintText: 'e.g. Drink 2L water',
             filled: true,
             fillColor: Colors.white,
@@ -95,7 +201,9 @@ class HabitNameSection extends StatelessWidget {
               vertical: 18,
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderRadius: BorderRadius.all(
+                Radius.circular(12),
+              ),
               borderSide: BorderSide.none,
             ),
           ),
@@ -105,26 +213,17 @@ class HabitNameSection extends StatelessWidget {
   }
 }
 
-class HabitIconSelector extends StatefulWidget {
-  const HabitIconSelector({super.key});
+class HabitIconSelector extends StatelessWidget {
+  final List<IconData> icons;
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
 
-  @override
-  State<HabitIconSelector> createState() => _HabitIconSelectorState();
-}
-
-class _HabitIconSelectorState extends State<HabitIconSelector> {
-  int selectedIndex = 0;
-
-  final List<IconData> habitIcons = [
-    Icons.water_drop,
-    Icons.fitness_center,
-    Icons.menu_book,
-    Icons.directions_run,
-    Icons.self_improvement,
-    Icons.restaurant,
-    Icons.bedtime,
-    Icons.code,
-  ];
+  const HabitIconSelector({
+    super.key,
+    required this.icons,
+    required this.selectedIndex,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -141,13 +240,9 @@ class _HabitIconSelectorState extends State<HabitIconSelector> {
         ),
         const SizedBox(height: 12),
         HabitIconGrid(
-          icons: habitIcons,
+          icons: icons,
           selectedIndex: selectedIndex,
-          onSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
+          onSelected: onSelected,
         ),
       ],
     );
@@ -225,19 +320,17 @@ class HabitIconItem extends StatelessWidget {
   }
 }
 
-class HabitFrequencySelector extends StatefulWidget {
-  const HabitFrequencySelector({super.key});
+class HabitFrequencySelector extends StatelessWidget {
+  final String selectedFrequency;
+  final ValueChanged<String> onSelected;
 
-  @override
-  State<HabitFrequencySelector> createState() =>
-      _HabitFrequencySelectorState();
-}
+  const HabitFrequencySelector({
+    super.key,
+    required this.selectedFrequency,
+    required this.onSelected,
+  });
 
-class _HabitFrequencySelectorState
-    extends State<HabitFrequencySelector> {
-  String selectedFrequency = 'Daily';
-
-  final List<String> frequencies = [
+  static const List<String> frequencies = [
     'Daily',
     'Weekdays',
     'Weekends',
@@ -261,11 +354,7 @@ class _HabitFrequencySelectorState
         HabitFrequencyOptions(
           frequencies: frequencies,
           selectedFrequency: selectedFrequency,
-          onSelected: (frequency) {
-            setState(() {
-              selectedFrequency = frequency;
-            });
-          },
+          onSelected: onSelected,
         ),
       ],
     );
@@ -347,37 +436,21 @@ class HabitFrequencyItem extends StatelessWidget {
   }
 }
 
-class ReminderTimeSection extends StatefulWidget {
-  const ReminderTimeSection({super.key});
+class ReminderTimeSection extends StatelessWidget {
+  final TimeOfDay selectedTime;
+  final VoidCallback onTap;
 
-  @override
-  State<ReminderTimeSection> createState() =>
-      _ReminderTimeSectionState();
-}
-
-class _ReminderTimeSectionState extends State<ReminderTimeSection> {
-  TimeOfDay selectedTime = const TimeOfDay(
-    hour: 8,
-    minute: 0,
-  );
-
-  Future<void> selectReminderTime() async {
-    final TimeOfDay? pickedTime = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-    );
-
-    if (pickedTime != null) {
-      setState(() {
-        selectedTime = pickedTime;
-      });
-    }
-  }
+  const ReminderTimeSection({
+    super.key,
+    required this.selectedTime,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final formattedTime = MaterialLocalizations.of(context)
-        .formatTimeOfDay(selectedTime);
+    final formattedTime =
+        MaterialLocalizations.of(context)
+            .formatTimeOfDay(selectedTime);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -393,7 +466,7 @@ class _ReminderTimeSectionState extends State<ReminderTimeSection> {
         const SizedBox(height: 12),
         ReminderTimeField(
           time: formattedTime,
-          onTap: selectReminderTime,
+          onTap: onTap,
         ),
       ],
     );
@@ -452,7 +525,12 @@ class ReminderTimeField extends StatelessWidget {
 }
 
 class CreateHabitButton extends StatelessWidget {
-  const CreateHabitButton({super.key});
+  final VoidCallback onPressed;
+
+  const CreateHabitButton({
+    super.key,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -460,13 +538,7 @@ class CreateHabitButton extends StatelessWidget {
       width: double.infinity,
       height: 54,
       child: ElevatedButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Create Habit button clicked!'),
-            ),
-          );
-        },
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFB7573A),
           foregroundColor: Colors.white,
