@@ -62,7 +62,7 @@ flutter analyze
 
 ## Screenshot
 
-![Day 2 - Habit Tracker UI](screenshot.png)
+Day 2 - Habit Tracker UI (screenshot.png)
 
 ## Learning Outcomes
 
