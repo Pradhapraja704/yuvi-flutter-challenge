@@ -1,3 +1,4 @@
+
 # Day 2 – Bottom Navigation Bar
 
 ## Overview
@@ -11,7 +12,7 @@ Day 2 focuses on building the Bottom Navigation Bar for the Flutter Habit Tracke
 - **Add Button:** Central button for adding a new item.
 - **Analytics:** Navigation option for viewing habit analytics.
 - **Profile:** Navigation option for user profile details.
-- **Responsive Layout:** Navigation bar designed for mobile screens.
+- **Responsive Layout:** Floating navigation bar with rounded corners and shadow, designed for mobile screens.
 
 ## Technologies Used
 
@@ -25,10 +26,15 @@ Day 2 focuses on building the Bottom Navigation Bar for the Flutter Habit Tracke
 day2/
 ├── lib/
 │   ├── main.dart
-│   └── screens/
-│       └── new_habit_screen.dart
+│   ├── screens/
+│   │   └── new_habit_screen.dart
+│   └── widgets/
+│       ├── add_navigation_button.dart
+│       ├── bottom_navigation_bar.dart
+│       └── navigation_item.dart
 ├── test/
 ├── web/
+├── screenshot.png
 ├── pubspec.yaml
 ├── analysis_options.yaml
 └── README.md
@@ -56,7 +62,7 @@ flutter analyze
 
 ## Screenshot
 
-The application screenshot will be available in `screenshot.png`.
+![Day 2 - Habit Tracker UI](screenshot.png)
 
 ## Learning Outcomes
 
@@ -68,4 +74,4 @@ The application screenshot will be available in `screenshot.png`.
 
 ## Status
 
-**In Progress:** Day 2 – Bottom Navigation Bar
+**Completed:** Day 2 – Bottom Navigation Bar
