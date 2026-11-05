@@ -1,3 +1,4 @@
+
 # Yuvi Flutter Challenge – 7-Day Technical Assignment
 
 ## Project Overview
@@ -18,14 +19,14 @@ The objective is to develop Flutter Web applications by implementing the assigne
 
 ## Technology Stack
 
-|     Technology     |         Purpose          |
-|--------------------|--------------------------|
-|       Flutter      | UI development framework |
-|        Dart        |   Programming language   |
-| Visual Studio Code | Development environment  |
-|    Google Chrome   |   Flutter Web execution  |
-|         Git        |      Version control     |
-|       GitHub       |  Source code management  |
+| Technology | Purpose |
+|---|---|
+| Flutter | UI development framework |
+| Dart | Programming language |
+| Visual Studio Code | Development environment |
+| Google Chrome | Flutter Web execution |
+| Git | Version control |
+| GitHub | Source code management |
 
 ## Repository Structure
 
@@ -41,10 +42,29 @@ yuvi-flutter-challenge/
 ├── day1/
 │   ├── lib/
 │   ├── web/
+│   ├── README.md
+│   └── screenshots
+│
+├── day2/
+│   ├── lib/
+│   │   ├── models/
+│   │   │   └── habit_icon_data.dart
+│   │   ├── screens/
+│   │   │   └── new_habit_screen.dart
+│   │   └── widgets/
+│   │       ├── add_navigation_button.dart
+│   │       ├── bottom_navigation_bar.dart
+│   │       ├── navigation_item.dart
+│   │       ├── habit_header.dart
+│   │       ├── habit_name_section.dart
+│   │       ├── habit_icon_selector.dart
+│   │       ├── habit_frequency_selector.dart
+│   │       ├── reminder_time_section.dart
+│   │       └── create_habit_button.dart
+│   ├── web/
 │   ├── screenshot.png
 │   └── README.md
 │
-├── day2/
 ├── day3/
 ├── day4/
 ├── day5/
@@ -62,38 +82,48 @@ Each day contains an independent Flutter project with its own source code, scree
 |---|---|---|
 | Day 0 | Flutter Environment Setup | Completed |
 | Day 1 | Habit Creation Screen | Completed |
-| Day 2 | Pending | Not Started |
+| Day 2 | Bottom Navigation Bar and Code Refactoring | Completed |
 | Day 3 | Pending | Not Started |
 | Day 4 | Pending | Not Started |
 | Day 5 | Pending | Not Started |
 | Day 6 | Pending | Not Started |
 | Day 7 | Pending | Not Started |
 
+## Day 2 – Implementation Highlights
+
+- Developed a floating bottom navigation bar.
+- Implemented Home, Calendar, Add, Analytics, and Profile navigation items.
+- Added interactive navigation item selection.
+- Created reusable UI components.
+- Refactored the original single-file implementation into separate models, screens, and widget files.
+- Maintained the existing UI design and functionality.
+- Verified the implementation using Flutter Analyze.
+
 ## Running a Project
 
 Navigate to the required day folder:
 
-```bash
-cd day1
-```
+
+cd day2
+
 
 Install dependencies:
 
-```bash
+
 flutter pub get
-```
+
 
 Run the application in Chrome:
 
-```bash
+
 flutter run -d chrome
-```
+
 
 Analyze the code:
 
-```bash
+
 flutter analyze
-```
+
 
 ## Development Guidelines
 
