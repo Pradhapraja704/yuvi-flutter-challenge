@@ -1,4 +1,3 @@
-
 # Yuvi Flutter Challenge – 7-Day Technical Assignment
 
 ## Project Overview
@@ -43,7 +42,7 @@ yuvi-flutter-challenge/
 │   ├── lib/
 │   ├── web/
 │   ├── README.md
-│   └── screenshots
+│   └── screenshots/
 │
 ├── day2/
 │   ├── lib/
@@ -66,6 +65,11 @@ yuvi-flutter-challenge/
 │   └── README.md
 │
 ├── day3/
+│   ├── lib/
+│   ├── web/
+│   ├── day3_demo.mp4
+│   └── README.md
+│
 ├── day4/
 ├── day5/
 ├── day6/
@@ -74,7 +78,7 @@ yuvi-flutter-challenge/
 └── README.md
 ```
 
-Each day contains an independent Flutter project with its own source code, screenshot, and documentation.
+Each day contains an independent Flutter project with its own source code, screenshot or demo recording, and documentation.
 
 ## Development Progress
 
@@ -83,7 +87,7 @@ Each day contains an independent Flutter project with its own source code, scree
 | Day 0 | Flutter Environment Setup | Completed |
 | Day 1 | Habit Creation Screen | Completed |
 | Day 2 | Bottom Navigation Bar and Code Refactoring | Completed |
-| Day 3 | Pending | Not Started |
+| Day 3 | Interactive Navigation and Animations | Completed |
 | Day 4 | Pending | Not Started |
 | Day 5 | Pending | Not Started |
 | Day 6 | Pending | Not Started |
@@ -99,12 +103,24 @@ Each day contains an independent Flutter project with its own source code, scree
 - Maintained the existing UI design and functionality.
 - Verified the implementation using Flutter Analyze.
 
+## Day 3 – Implementation Highlights
+
+- Implemented interactive bottom navigation between Home, Calendar, Add, Analytics, and Profile screens.
+- Added dynamic Create Habit button colour changes based on user input.
+- Implemented directional page transitions.
+- Added smooth slide and fade animations using AnimatedSwitcher, AnimatedSlide, and AnimatedOpacity.
+- Implemented an animated transition for the New Habit screen.
+- Improved the initial loading experience by preloading the Add Habit screen.
+- Verified the implementation using Flutter Analyze.
+
+**Demo Video:** `day3/day3_demo.mp4`
+
 ## Running a Project
 
 Navigate to the required day folder:
 
 
-cd day2
+cd day3
 
 
 Install dependencies:
