@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons_300.dart';
 
 import 'add_navigation_button.dart';
 import 'navigation_item.dart';
@@ -17,21 +19,25 @@ class HabitBottomNavigationBar extends StatelessWidget {
 
   Widget buildNavigationItem(
     IconData icon,
+    IconData selectedIcon,
     String label,
-    int index,
-  ) {
+    int index, {
+    bool showIconFrame = false,
+  }) {
     return NavigationItem(
       icon: icon,
+      selectedIcon: selectedIcon,
       label: label,
       isSelected: selectedIndex == index,
       onTap: () => onItemSelected(index),
+      showIconFrame: showIconFrame,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
+      height: 66,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -40,7 +46,6 @@ class HabitBottomNavigationBar extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.10),
             blurRadius: 18,
-            spreadRadius: 1,
             offset: const Offset(0, 5),
           ),
         ],
@@ -49,11 +54,32 @@ class HabitBottomNavigationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          buildNavigationItem(Icons.home_outlined, 'Home', 0),
-          buildNavigationItem(Icons.calendar_month_outlined, 'Calendar', 1),
+          buildNavigationItem(
+            LucideIcons300.house,
+            Icons.home_rounded,
+            'Home',
+            0,
+          ),
+          buildNavigationItem(
+            LucideIcons300.calendarDays,
+            Icons.calendar_month_rounded,
+            'Calendar',
+            1,
+          ),
           AddNavigationButton(onTap: onAdd),
-          buildNavigationItem(Icons.analytics_outlined, 'Analytics', 2),
-          buildNavigationItem(Icons.person_outline, 'Profile', 3),
+          buildNavigationItem(
+            LucideIcons300.chartNoAxesColumnIncreasing,
+            Icons.analytics_rounded,
+            'Analytics',
+            2,
+            showIconFrame: true,
+          ),
+          buildNavigationItem(
+            LucideIcons300.userRound,
+            Icons.person_rounded,
+            'Profile',
+            3,
+          ),
         ],
       ),
     );

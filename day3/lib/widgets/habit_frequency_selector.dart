@@ -26,7 +26,7 @@ class HabitFrequencySelector extends StatelessWidget {
           'Choose Frequency',
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.bold,
             color: Color(0xFF292929),
           ),
         ),
@@ -116,10 +116,10 @@ class HabitFrequencyItem extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-            fontSize: 11,
+            fontSize: 13,
             color: isSelected
                 ? const Color(0xFF292929)
-                : const Color(0xFF555555),
+                : const Color.fromARGB(255, 150, 148, 148),
             fontWeight: FontWeight.w600,
           ),
         ),

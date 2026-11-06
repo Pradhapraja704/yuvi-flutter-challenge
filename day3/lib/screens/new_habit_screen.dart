@@ -313,6 +313,7 @@ class _NewHabitContentState extends State<NewHabitContent> {
           const SizedBox(height: 24),
           CreateHabitButton(
             onPressed: createHabit,
+            
             isActive: habitNameController.text.trim().isNotEmpty,
           ),
         ],
