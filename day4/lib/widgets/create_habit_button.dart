@@ -19,31 +19,29 @@ class CreateHabitButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFFF947B),
+          backgroundColor: isActive
+              ? const Color(0xFFFF7778)
+              : const Color(0xFFFF947B),
           foregroundColor: Colors.white,
           elevation: 2,
           padding: EdgeInsets.zero,
           shape: const StadiumBorder(),
-        ).copyWith(
-          backgroundColor: WidgetStateProperty.resolveWith((states) {
-            if (isActive) {
-              return const Color(0xFFFF7778);
-            }
-            return const Color(0xFFFF947B);
-          }),
         ),
         child: Ink(
-          decoration: isActive
-              ? const BoxDecoration(
-                  gradient: LinearGradient(
+          decoration: BoxDecoration(
+            gradient: isActive
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                     colors: [
                       Color(0xFFFFA17F),
                       Color(0xFFFF7778),
                     ],
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                )
-              : null,
+                  )
+                : null,
+            color: isActive ? null : const Color(0xFFFF947B),
+            borderRadius: BorderRadius.circular(30),
+          ),
           child: Container(
             alignment: Alignment.center,
             child: const Text(
