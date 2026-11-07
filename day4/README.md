@@ -4,6 +4,10 @@
 
 Day 4 focuses on recreating the provided New Habit Creation reference mockup in the Flutter Habit Tracker application. The implementation emphasizes matching the reference design's typography, layout, spacing, colours, and activity illustrations.
 
+## Screenshot
+
+![Day 4 Habit Tracker](screenshot.png)
+
 ## Implementation Highlights
 
 - Identified **Poppins** as the font that closely matches the reference mockup.
@@ -15,8 +19,6 @@ Day 4 focuses on recreating the provided New Habit Creation reference mockup in 
 - Organized the implementation into reusable screens, widgets, and model files.
 
 ## Custom Activity Icons
-
-The activity selector uses the following custom PNG assets:
 
 | Activity | Asset |
 |---|---|
@@ -56,38 +58,6 @@ day4/
 ├── lib/
 │   ├── models/
 │   ├── screens/
-│   ├── widgets/
-│   └── main.dart
-├── test/
-├── web/
-├── pubspec.yaml
+│   └── widgets/
+├── screenshot.png
 └── README.md
-```
-
-## Run the Application
-
-Install dependencies:
-
-```bash
-flutter pub get
-```
-
-Run in Chrome:
-
-```bash
-flutter run -d chrome
-```
-
-Analyze the code:
-
-```bash
-flutter analyze
-```
-
-## Screenshot
-
-The Day 4 application screenshot is saved as `day4_screenshot.png` in this project folder.
-
-## Status
-
-**Completed:** Day 4 – New Habit Creation Screen and Reference Mockup Replication.
