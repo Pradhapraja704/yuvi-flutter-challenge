@@ -35,37 +35,136 @@ The objective is to develop Flutter Web applications by implementing the assigne
 yuvi-flutter-challenge/
 │
 ├── day0/
+│   │
 │   ├── lib/
+│   │   └── main.dart
+│   │
 │   ├── test/
+│   │   └── widget_test.dart
+│   │
 │   ├── web/
+│   │   ├── icons/
+│   │   │   ├── Icon-192.png
+│   │   │   ├── Icon-512.png
+│   │   │   ├── Icon-maskable-192.png
+│   │   │   └── Icon-maskable-512.png
+│   │   ├── favicon.png
+│   │   ├── index.html
+│   │   └── manifest.json
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── analysis_options.yaml
+│   ├── pubspec.yaml
+│   ├── pubspec.lock
 │   ├── screenshot.png
 │   └── README.md
 │
 ├── day1/
+│   │
 │   ├── lib/
+│   │   ├── screens/
+│   │   │   └── new_habit_screen.dart
+│   │   └── main.dart
+│   │
 │   ├── test/
+│   │   └── widget_test.dart
+│   │
 │   ├── web/
+│   │   ├── icons/
+│   │   │   ├── Icon-192.png
+│   │   │   ├── Icon-512.png
+│   │   │   ├── Icon-maskable-192.png
+│   │   │   └── Icon-maskable-512.png
+│   │   ├── favicon.png
+│   │   ├── index.html
+│   │   └── manifest.json
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── analysis_options.yaml
+│   ├── pubspec.yaml
 │   ├── screenshot1.png
 │   ├── screenshot2.png
 │   └── README.md
 │
 ├── day2/
+│   │
 │   ├── lib/
 │   │   ├── models/
+│   │   │   └── habit_icon_data.dart
+│   │   │
 │   │   ├── screens/
-│   │   └── widgets/
+│   │   │   └── new_habit_screen.dart
+│   │   │
+│   │   ├── widgets/
+│   │   │   ├── add_navigation_button.dart
+│   │   │   ├── bottom_navigation_bar.dart
+│   │   │   ├── create_habit_button.dart
+│   │   │   ├── habit_frequency_selector.dart
+│   │   │   ├── habit_header.dart
+│   │   │   ├── habit_icon_selector.dart
+│   │   │   ├── habit_name_section.dart
+│   │   │   ├── navigation_item.dart
+│   │   │   └── reminder_time_section.dart
+│   │   │
+│   │   └── main.dart
+│   │
 │   ├── test/
+│   │   └── widget_test.dart
+│   │
 │   ├── web/
+│   │   ├── icons/
+│   │   │   ├── Icon-192.png
+│   │   │   ├── Icon-512.png
+│   │   │   ├── Icon-maskable-192.png
+│   │   │   └── Icon-maskable-512.png
+│   │   ├── favicon.png
+│   │   ├── index.html
+│   │   └── manifest.json
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── analysis_options.yaml
+│   ├── pubspec.yaml
 │   ├── screenshot.png
 │   └── README.md
 │
 ├── day3/
+│   │
 │   ├── lib/
+│   │   ├── models/
+│   │   │   └── habit_icon_data.dart
+│   │   │
+│   │   ├── screens/
+│   │   │   ├── new_habit_screen.dart
+│   │   │   └── placeholder_screen.dart
+│   │   │
+│   │   ├── widgets/
+│   │   │   ├── add_navigation_button.dart
+│   │   │   ├── bottom_navigation_bar.dart
+│   │   │   ├── create_habit_button.dart
+│   │   │   ├── habit_frequency_selector.dart
+│   │   │   ├── habit_header.dart
+│   │   │   ├── habit_icon_selector.dart
+│   │   │   ├── habit_name_section.dart
+│   │   │   ├── navigation_item.dart
+│   │   │   └── reminder_time_section.dart
+│   │   │
+│   │   └── main.dart
+│   │
+│   ├── test/
 │   ├── web/
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── analysis_options.yaml
+│   ├── pubspec.yaml
 │   ├── day3_demo.mp4
 │   └── README.md
 │
 ├── day4/
+│   │
 │   ├── assets/
 │   │   └── activity_icons/
 │   │       ├── all_in.png
@@ -76,14 +175,36 @@ yuvi-flutter-challenge/
 │   │       ├── singing.png
 │   │       ├── sleeping.png
 │   │       └── yoga.png
+│   │
 │   ├── lib/
 │   │   ├── models/
+│   │   │   └── habit_icon_data.dart
+│   │   │
 │   │   ├── screens/
+│   │   │   ├── new_habit_screen.dart
+│   │   │   └── placeholder_screen.dart
+│   │   │
 │   │   ├── widgets/
+│   │   │   ├── add_navigation_button.dart
+│   │   │   ├── bottom_navigation_bar.dart
+│   │   │   ├── create_habit_button.dart
+│   │   │   ├── habit_frequency_selector.dart
+│   │   │   ├── habit_header.dart
+│   │   │   ├── habit_icon_selector.dart
+│   │   │   ├── habit_name_section.dart
+│   │   │   ├── navigation_item.dart
+│   │   │   └── reminder_time_section.dart
+│   │   │
 │   │   └── main.dart
+│   │
 │   ├── test/
 │   ├── web/
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── analysis_options.yaml
 │   ├── pubspec.yaml
+│   ├── screenshot.png
 │   └── README.md
 │
 ├── day5/
@@ -93,7 +214,7 @@ yuvi-flutter-challenge/
 └── README.md
 ```
 
-Each day contains an independent Flutter project with its own source code, screenshot or demo recording, and documentation.
+Each day contains an independent Flutter project with its own source code, supporting files, screenshots or demo recordings, and documentation.
 
 ## Development Progress
 
@@ -178,7 +299,7 @@ The focus of Day 4 was to recreate the provided New Habit Creation reference moc
 | Cycling | `cycling.png` |
 | All In | `all_in.png` |
 
-**Screenshot:** `day4/day4_screenshot.png`
+**Screenshot:** `day4/screenshot.png`
 
 ## Running a Project
 
