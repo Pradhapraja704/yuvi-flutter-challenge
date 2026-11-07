@@ -18,9 +18,31 @@ Day 3 focuses on improving the Habit Tracker application with interactive naviga
 - Flutter Web
 
 ## Project Structure
-- `lib/screens/` – Application screens
-- `lib/widgets/` – Reusable UI components
-- `lib/models/` – Data models
+```text
+day3/
+├── lib/
+│   ├── main.dart
+│   ├── models/
+│   │   └── habit_icon_data.dart
+│   ├── screens/
+│   │   ├── new_habit_screen.dart
+│   │   └── placeholder_screen.dart
+│   └── widgets/
+│       ├── add_navigation_button.dart
+│       ├── bottom_navigation_bar.dart
+│       ├── create_habit_button.dart
+│       ├── habit_frequency_selector.dart
+│       ├── habit_header.dart
+│       ├── habit_icon_selector.dart
+│       ├── habit_name_section.dart
+│       ├── navigation_item.dart
+│       └── reminder_time_section.dart
+├── test/
+├── web/
+├── day3_demo.mp4
+├── pubspec.yaml
+└── README.md
+```
 
 ## Demo Video
 The Day 3 implementation is demonstrated in the following video:
