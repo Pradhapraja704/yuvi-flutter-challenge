@@ -8,24 +8,25 @@ The objective is to develop Flutter Web applications by implementing the assigne
 
 ## Objectives
 
-- Learn and apply Flutter and Dart.
-- Develop UI components based on the provided design references.
-- Build reusable and maintainable widgets.
-- Follow Flutter naming conventions and clean coding practices.
-- Test and validate applications using Flutter Analyze.
-- Maintain independent Flutter projects for each challenge day.
-- Document implementation details and learning outcomes.
+* Learn and apply Flutter and Dart.
+* Develop UI components based on the provided design references.
+* Build reusable and maintainable widgets.
+* Follow Flutter naming conventions and clean coding practices.
+* Test and validate applications using Flutter Analyze.
+* Maintain independent Flutter projects for each challenge day.
+* Document implementation details and learning outcomes.
 
 ## Technology Stack
 
 | Technology | Purpose |
-|---|---|
+| --- | --- |
 | Flutter | UI development framework |
 | Dart | Programming language |
 | Visual Studio Code | Development environment |
 | Google Chrome | Flutter Web execution |
 | Google Fonts – Poppins | Typography used in the Day 4 mockup replication |
 | Custom PNG Assets | Activity illustrations used in Day 4 |
+| Custom Painters & Linear Gradients | Navigation bar styling and UI enhancements used in Day 5 |
 | Git | Version control |
 | GitHub | Source code management |
 
@@ -208,10 +209,31 @@ yuvi-flutter-challenge/
 │   └── README.md
 │
 ├── day5/
+│   │
+│   ├── assets/
+│   │   └── activity_icons/
+│   │
+│   ├── lib/
+│   │   ├── models/
+│   │   ├── screens/
+│   │   │   ├── home_screen.dart
+│   │   │   ├── new_habit_screen.dart
+│   │   │   └── placeholder_screen.dart
+│   │   └── widgets/
+│   │       ├── add_navigation_button.dart
+│   │       ├── bottom_navigation_bar.dart
+│   │       ├── navigation_item.dart
+│   │       └── ...
+│   │
+│   ├── screenshot1.png
+│   ├── screenshot2.png
+│   └── README.md
+│
 ├── day6/
 ├── day7/
 │
 └── README.md
+
 ```
 
 Each day contains an independent Flutter project with its own source code, supporting files, screenshots or demo recordings, and documentation.
@@ -219,56 +241,56 @@ Each day contains an independent Flutter project with its own source code, suppo
 ## Development Progress
 
 | Day | Task | Status |
-|---|---|---|
+| --- | --- | --- |
 | Day 0 | Flutter Environment Setup | Completed |
 | Day 1 | Habit Creation Screen | Completed |
 | Day 2 | Bottom Navigation Bar and Code Refactoring | Completed |
 | Day 3 | Interactive Navigation and Animations | Completed |
 | Day 4 | New Habit Creation Screen – Mockup Replication | Completed |
-| Day 5 | Pending | Not Started |
+| Day 5 | Navigation Bar Refinement & Home Screen | Completed |
 | Day 6 | Pending | Not Started |
 | Day 7 | Pending | Not Started |
 
 ## Day 0 – Flutter Environment Setup
 
-- Installed and configured the Flutter SDK.
-- Configured the Dart SDK.
-- Set up Flutter development in Visual Studio Code.
-- Configured Flutter Web support.
-- Created the initial Flutter project.
-- Installed project dependencies.
-- Successfully executed the application in Google Chrome.
-- Verified the project using Flutter Analyze.
-- Created the initial project documentation and screenshot.
+* Installed and configured the Flutter SDK.
+* Configured the Dart SDK.
+* Set up Flutter development in Visual Studio Code.
+* Configured Flutter Web support.
+* Created the initial Flutter project.
+* Installed project dependencies.
+* Successfully executed the application in Google Chrome.
+* Verified the project using Flutter Analyze.
+* Created the initial project documentation and screenshot.
 
 ## Day 1 – Habit Creation Screen
 
-- Built the Habit Creation screen for the Flutter Habit Tracker application.
-- Added a text field for entering a habit name.
-- Implemented interactive habit icon selection.
-- Added frequency options: Daily, Weekdays, Weekends, and Custom.
-- Implemented a reminder time picker.
-- Added a Create Habit button with a confirmation message.
-- Created a scrollable layout designed for mobile screens.
+* Built the Habit Creation screen for the Flutter Habit Tracker application.
+* Added a text field for entering a habit name.
+* Implemented interactive habit icon selection.
+* Added frequency options: Daily, Weekdays, Weekends, and Custom.
+* Implemented a reminder time picker.
+* Added a Create Habit button with a confirmation message.
+* Created a scrollable layout designed for mobile screens.
 
 ## Day 2 – Bottom Navigation Bar and Code Refactoring
 
-- Developed a floating bottom navigation bar.
-- Implemented Home, Calendar, Add, Analytics, and Profile navigation items.
-- Added interactive navigation item selection.
-- Created reusable UI components.
-- Refactored the original single-file implementation into separate models, screens, and widget files.
-- Maintained the existing UI design and functionality.
-- Verified the implementation using Flutter Analyze.
+* Developed a floating bottom navigation bar.
+* Implemented Home, Calendar, Add, Analytics, and Profile navigation items.
+* Added interactive navigation item selection.
+* Created reusable UI components.
+* Refactored the original single-file implementation into separate models, screens, and widget files.
+* Maintained the existing UI design and functionality.
+* Verified the implementation using Flutter Analyze.
 
 ## Day 3 – Interactive Navigation and Button Enhancement
 
-- Implemented interactive bottom navigation between Home, Calendar, Add Habit, Analytics, and Profile screens.
-- Added dynamic Create Habit button colour changes based on user input.
-- Implemented directional page transitions.
-- Added smooth slide and fade animations using AnimatedSwitcher, AnimatedSlide, and AnimatedOpacity.
-- Implemented an animated transition for the New Habit screen.
-- Improved the initial loading experience by preloading the Add Habit screen.
+* Implemented interactive bottom navigation between Home, Calendar, Add Habit, Analytics, and Profile screens.
+* Added dynamic Create Habit button colour changes based on user input.
+* Implemented directional page transitions.
+* Added smooth slide and fade animations using AnimatedSwitcher, AnimatedSlide, and AnimatedOpacity.
+* Implemented an animated transition for the New Habit screen.
+* Improved the initial loading experience by preloading the Add Habit screen.
 
 **Demo Video:** `day3/day3_demo.mp4`
 
@@ -278,18 +300,18 @@ The focus of Day 4 was to recreate the provided New Habit Creation reference moc
 
 ### Implementation Highlights
 
-- Identified **Poppins** as the font that closely matches the reference mockup.
-- Integrated Poppins using the Google Fonts package.
-- Replicated the reference screen's typography, colours, spacing, alignment, and overall layout.
-- Created and integrated eight custom 3D-style PNG activity icons.
-- Replaced standard emoji representations in the activity selector with custom PNG assets.
-- Standardized icon dimensions and alignment for visual consistency.
-- Organized the implementation into reusable screens, widgets, and model files.
+* Identified **Poppins** as the font that closely matches the reference mockup.
+* Integrated Poppins using the Google Fonts package.
+* Replicated the reference screen's typography, colours, spacing, alignment, and overall layout.
+* Created and integrated eight custom 3D-style PNG activity icons.
+* Replaced standard emoji representations in the activity selector with custom PNG assets.
+* Standardized icon dimensions and alignment for visual consistency.
+* Organized the implementation into reusable screens, widgets, and model files.
 
 ### Custom Activity Icons
 
 | Activity | Asset |
-|---|---|
+| --- | --- |
 | Yoga | `yoga.png` |
 | Singing | `singing.png` |
 | Reading | `reading.png` |
@@ -301,40 +323,77 @@ The focus of Day 4 was to recreate the provided New Habit Creation reference moc
 
 **Screenshot:** `day4/screenshot.png`
 
+## Day 5 – Navigation Bar Refinement & Home Screen
+
+The focus of Day 5 was refining the bottom navigation bar and creating the initial layout of the second screen (Home Dashboard) in the Flutter Habit Tracker application.
+
+### Implementation Highlights
+
+#### Navigation Bar Refinement
+
+* Replicated and refined the Home, Calendar, Analytics, and Profile navigation icons to closely match the reference design.
+* Implemented an orange-to-pink linear gradient for all selected navigation icons.
+* Applied matching gradient styling to selected navigation labels.
+* Refined the Profile icon's head and shoulder proportions.
+* Improved the plus button with a lighter icon and gradient circular background.
+* Adjusted navigation bar dimensions, spacing, rounded corners, and shadow.
+* Implemented responsive navigation label sizing to prevent text wrapping across different screen widths.
+* Preserved existing navigation functionality.
+
+#### Second Screen – Home Dashboard
+
+* Created the initial basic layout of the Home Dashboard.
+* Added a Home screen header.
+* Created a Daily Progress card.
+* Added Deadline and People sections.
+* Created a Today's Habits section with hardcoded sample data.
+* Integrated the Home screen into the existing bottom navigation.
+
+The Home Dashboard currently has a rough basic UI layout, with further visual refinement planned for upcoming updates.
+
+**Screenshots:**
+
+* `day5/screenshot1.png` (Navigation Bar Refinement)
+* `day5/screenshot2.png` (Basic Home Screen Layout)
+
 ## Running a Project
 
-Navigate to the required project folder. For example, to run Day 4:
+Navigate to the required project folder. For example, to run Day 5:
 
 ```bash
-cd day4
+cd day5
+
 ```
 
 Install dependencies:
 
 ```bash
 flutter pub get
+
 ```
 
 Run the application in Chrome:
 
 ```bash
 flutter run -d chrome
+
 ```
 
 Analyze the code:
 
 ```bash
 flutter analyze
+
 ```
 
 ## Development Guidelines
 
-- Use meaningful and consistent naming conventions.
-- Follow Dart and Flutter coding standards.
-- Build reusable widgets wherever appropriate.
-- Avoid unnecessarily deep widget nesting.
-- Maintain separate documentation and screenshots for each day.
-- Commit and push completed work to GitHub regularly.
+* Use meaningful and consistent naming conventions.
+* Follow Dart and Flutter coding standards.
+* Build reusable widgets wherever appropriate.
+* Avoid unnecessarily deep widget nesting.
+* Maintain separate documentation and screenshots for each day.
+* Commit and push completed work to GitHub regularly.
 
 ## Repository
 
