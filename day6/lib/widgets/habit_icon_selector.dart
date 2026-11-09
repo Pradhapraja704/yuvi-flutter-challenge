@@ -1,0 +1,161 @@
+
+import 'package:flutter/material.dart';
+import 'dart:ui' show FontVariation;
+
+import '../models/habit_icon_data.dart';
+
+class HabitIconSelector extends StatelessWidget {
+  final List<HabitIconData> icons;
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
+
+  const HabitIconSelector({
+    super.key,
+    required this.icons,
+    required this.selectedIndex,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Choose Activity',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            fontVariations: [
+              FontVariation('wght', 550),
+            ],
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
+        const SizedBox(height: 8),
+        HabitIconGrid(
+          icons: icons,
+          selectedIndex: selectedIndex,
+          onSelected: onSelected,
+        ),
+      ],
+    );
+  }
+}
+
+class HabitIconGrid extends StatelessWidget {
+  final List<HabitIconData> icons;
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
+
+  const HabitIconGrid({
+    super.key,
+    required this.icons,
+    required this.selectedIndex,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const spacing = 6.0;
+        final itemWidth = (constraints.maxWidth - spacing * 3) / 4;
+
+        return Wrap(
+          spacing: spacing,
+          runSpacing: 6,
+          children: List.generate(
+            icons.length,
+            (index) => SizedBox(
+              width: itemWidth,
+              height: 76,
+              child: HabitIconItem(
+                data: icons[index],
+                isSelected: selectedIndex == index,
+                onTap: () => onSelected(index),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class HabitIconItem extends StatelessWidget {
+  final HabitIconData data;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const HabitIconItem({
+    super.key,
+    required this.data,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFFF9EBDF) : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isSelected
+                ? const Color(0xFFEFA08D)
+                : Colors.transparent,
+            width: 1,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/activity_icons/${_getIconFileName(data.name)}',
+              width: 43,
+              height: 43,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 3),
+            Text(
+              data.name,
+              maxLines: 1,
+              style: const TextStyle(
+                fontSize: 9.5,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF292929),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _getIconFileName(String name) {
+    switch (name) {
+      case 'Yoga':
+        return 'yoga.png';
+      case 'Singing':
+        return 'singing.png';
+      case 'Reading':
+        return 'reading.png';
+      case 'Running':
+        return 'running.png';
+      case 'Sleeping':
+        return 'sleeping.png';
+      case 'Drawing':
+        return 'drawing.png';
+      case 'Cycling':
+        return 'cycling.png';
+      case 'All In':
+        return 'all_in.png';
+      default:
+        return 'all_in.png';
+    }
+  }
+}
