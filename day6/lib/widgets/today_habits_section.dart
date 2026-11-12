@@ -12,12 +12,11 @@ class TodayHabitsSection extends StatefulWidget {
 
 class _TodayHabitsSectionState extends State<TodayHabitsSection> {
   final List<bool> _completed = [
-    true,
-    true,
-    false,
     false,
   ];
 
+  
+  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,21 +30,21 @@ class _TodayHabitsSectionState extends State<TodayHabitsSection> {
           streak: '12 days',
         ),
         _buildHabitItem(
-          index: 1,
+          index: 0,
           imagePath: 'assets/activity_icons/running.png',
           fallbackIcon: Icons.fitness_center_rounded,
           title: 'Morning Workout',
           streak: '8 days',
         ),
         _buildHabitItem(
-          index: 2,
+          index: 0,
           imagePath: 'assets/activity_icons/reading.png',
           fallbackIcon: Icons.code_rounded,
           title: 'Practice Coding',
           streak: '15 days',
         ),
         _buildHabitItem(
-          index: 3,
+          index: 0,
           imagePath: 'assets/activity_icons/yoga.png',
           fallbackIcon: Icons.self_improvement_rounded,
           title: 'Meditation',
