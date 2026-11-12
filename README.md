@@ -1,3 +1,4 @@
+
 # Yuvi Flutter Challenge – 7-Day Technical Assignment
 
 ## Project Overview
@@ -24,7 +25,7 @@ The objective is to develop Flutter Web applications by implementing the assigne
 | Dart | Programming language |
 | Visual Studio Code | Development environment |
 | Google Chrome | Flutter Web execution |
-| Google Fonts – Poppins | Typography used in the Day 4 mockup replication |
+| Google Fonts – Poppins | Typography used in the Day 4 and Day 7 mockup refinements |
 | Nunito Sans | Typography used in the Day 6 Home Dashboard |
 | Custom PNG Assets | Activity illustrations and profile avatars |
 | Custom Painters & Linear Gradients | Navigation bar styling and dashboard UI enhancements |
@@ -179,6 +180,40 @@ yuvi-flutter-challenge/
 │   └── README.md
 │
 ├── day7/
+│   ├── assets/
+│   │   ├── activity_icons/
+│   │   ├── fonts/
+│   │   ├── profile_icons/
+│   │   └── profile.png
+│   ├── lib/
+│   │   ├── models/
+│   │   │   └── habit_icon_data.dart
+│   │   ├── screens/
+│   │   │   ├── home_screen.dart
+│   │   │   ├── new_habit_screen.dart
+│   │   │   └── placeholder_screen.dart
+│   │   ├── widgets/
+│   │   │   ├── add_navigation_button.dart
+│   │   │   ├── bottom_navigation_bar.dart
+│   │   │   ├── create_habit_button.dart
+│   │   │   ├── daily_progress_card.dart
+│   │   │   ├── deadline_people_section.dart
+│   │   │   ├── habit_frequency_selector.dart
+│   │   │   ├── habit_header.dart
+│   │   │   ├── habit_icon_selector.dart
+│   │   │   ├── habit_name_section.dart
+│   │   │   ├── home_header.dart
+│   │   │   ├── navigation_item.dart
+│   │   │   ├── reminder_time_section.dart
+│   │   │   └── today_habits_section.dart
+│   │   └── main.dart
+│   ├── test/
+│   ├── web/
+│   ├── analysis_options.yaml
+│   ├── pubspec.yaml
+│   ├── pubspec.lock
+│   ├── screenshot.png
+│   └── README.md
 │
 └── README.md
 ```
@@ -196,7 +231,7 @@ Each day contains an independent Flutter project with its own source code, suppo
 | Day 4 | New Habit Creation Screen – Mockup Replication | Completed |
 | Day 5 | Navigation Bar Refinement & Home Screen | Completed |
 | Day 6 | Home Dashboard UI Refinement & Interactive Habit Cards | Completed |
-| Day 7 | Pending | Not Started |
+| Day 7 | Habit Tracker UI Mockup Replication & Refinement | Completed |
 
 ## Day 0 – Flutter Environment Setup
 
@@ -223,6 +258,7 @@ Each day contains an independent Flutter project with its own source code, suppo
 - Created a scrollable layout designed for mobile screens.
 
 **Screenshot:** `day1/screenshot1.png`
+
 **Screenshot:** `day1/screenshot2.png`
 
 ## Day 2 – Bottom Navigation Bar and Code Refactoring
@@ -357,12 +393,47 @@ The dashboard uses custom painters for its visual components:
 
 **Screenshot:** `day6/screenshot.png`
 
+## Day 7 – Habit Tracker UI Mockup Replication & Refinement
+
+The focus of Day 7 was successfully completing the assigned Habit Tracker UI mockup recreation using Flutter. The existing dashboard implementation was refined further, with particular attention to accurately reproducing the reference design and improving individual UI components.
+
+### Implementation Highlights
+
+#### UI Mockup Refinement
+
+- Refined the Habit Tracker screen to closely match the provided reference mockup.
+- Fine-tuned component dimensions, spacing, alignment, and visual proportions.
+- Refined typography using Poppins and Nunito Sans.
+- Improved the visual consistency of the dashboard components.
+
+#### Custom Icon Implementation
+
+- Implemented a custom back navigation chevron using CustomPainter.
+- Created a softly curved chevron tip with rounded stroke styling.
+- Implemented a custom reminder bell icon using CustomPainter.
+- Refined icon dimensions, positioning, and stroke widths.
+
+#### Habit Cards and Typography
+
+- Maintained interactive habit completion using StatefulWidget and setState.
+- Applied Poppins typography to habit names.
+- Applied Nunito Sans typography to streak information.
+- Refined habit card spacing and icon alignment.
+
+#### Reminder Time Formatting
+
+- Updated the reminder time display to use zero-padded hours and minutes.
+- Ensured consistent time formatting, such as `08:00 AM`.
+
+**Screenshot:** `day7/home_screenshot.png`
+**Screenshot:** `day7/create_habit_screenshot.png`
+
 ## Running a Project
 
-Navigate to the required project folder. For example, to run Day 6:
+Navigate to the required project folder. For example, to run Day 7:
 
 ```bash
-cd day6
+cd day7
 ```
 
 Install dependencies:
